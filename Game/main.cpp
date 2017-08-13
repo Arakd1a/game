@@ -1,16 +1,13 @@
-#include <iostream>
-#include <SDL.h>
+#include "window.h"
 
 
 int main(int argc, char **argv)
 {
-	if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
+	Window window("Game in C++", 800, 600);
+	while (!window.isClosed())
 	{
-		std::cerr << "SDL failed to initialize\n";
-	} else {
-		std::cout << "SDL Successfully initialized!\n";
+		window.pollEvents();
+		window.clear();
 	}
-
-	system("pause");
 	return 0;
 }
