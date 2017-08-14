@@ -52,6 +52,22 @@ void Window::pollEvents()
 		case SDL_QUIT:
 				_closed = true;
 				break;
+		case SDL_KEYDOWN:
+			std::cout << "Keypress code:" 
+			<< event.key.keysym.sym<< "\n";
+			switch (event.key.keysym.sym)
+			{
+			case SDLK_ESCAPE:
+				_closed = true;
+				break;
+			}
+			break;
+			case SDL_MOUSEMOTION:
+				_mouseX = event.motion.x;
+				_mouseY = event.motion.y;
+				std::cout << "Mouse X: " << _mouseX 
+				<< ", Mouse Y: " << _mouseY << "\n";
+				break;
 		default:
 			break;
 		}
@@ -59,14 +75,14 @@ void Window::pollEvents()
 }
 void Window::clear() const
 {
-	SDL_SetRenderDrawColor(_renderer, 0,0, 200, 255);
+	SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 255);
 	SDL_RenderClear(_renderer);
 
 	SDL_Rect rect;
-	rect.w = 120;
-	rect.h = 120;
-	rect.x = (_width / 2) - (rect.w / 2);
-	rect.y = (_height / 2) - (rect.h /2);
+	rect.w = 30;
+	rect.h = 30;
+	rect.x = _mouseX - (rect.w / 2);
+	rect.y = _mouseY - (rect.h /2);
 	SDL_SetRenderDrawColor(_renderer, 200, 0, 200, 255);
 	SDL_RenderFillRect(_renderer, &rect);
 

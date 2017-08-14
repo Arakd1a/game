@@ -18,6 +18,8 @@ private:
 	std::string _title;
 	int _width = 800;
 	int _height = 600;
+	int _mouseX;
+	int _mouseY;
 	bool _closed = false;
 	SDL_Window *_window = nullptr;
 	SDL_Renderer *_renderer = nullptr;
