@@ -78,6 +78,12 @@ void Window::clear() const
 	SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 255);
 	SDL_RenderClear(_renderer);
 
+
+
+	SDL_SetRenderDrawColor(_renderer, 255, 255, 255, 255);
+	SDL_RenderDrawLine(_renderer, _mouseX, _mouseY, _width / 2, _height / 2);
+	
+
 	SDL_Rect rect;
 	rect.w = 30;
 	rect.h = 30;
