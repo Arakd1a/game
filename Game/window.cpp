@@ -42,56 +42,44 @@ bool Window::init()
 	return true;
 }
 
-void Window::pollEvents()
+void Window::pollEvents(SDL_Event &event)
 {
-	SDL_Event event;
-	if (SDL_PollEvent(&event))
+	switch (event.type)
 	{
-		switch (event.type)
+	case SDL_QUIT:
+		_closed = true;
+		break;
+	case SDL_KEYDOWN:
+		switch (event.key.keysym.sym)
 		{
-		case SDL_QUIT:
-				_closed = true;
-				break;
-		case SDL_KEYDOWN:
-			std::cout << "Keypress code:" 
-			<< event.key.keysym.sym<< "\n";
-			switch (event.key.keysym.sym)
-			{
-			case SDLK_ESCAPE:
-				_closed = true;
-				break;
-			}
-			break;
-			case SDL_MOUSEMOTION:
-				_mouseX = event.motion.x;
-				_mouseY = event.motion.y;
-				std::cout << "Mouse X: " << _mouseX 
-				<< ", Mouse Y: " << _mouseY << "\n";
-				break;
-		default:
+		case SDLK_ESCAPE:
+			_closed = true;
 			break;
 		}
+		break;
+	case SDL_MOUSEMOTION:
+		std::cout << event.motion.x << ", "
+			<< event.motion.y << "\n";
+		break;
+	case SDL_MOUSEBUTTONDOWN:
+		std::cout << "Mouse down.\n";
+		break;
+	case SDL_MOUSEBUTTONUP:
+		std::cout << "Mouse up.\n";
+		break;
+	default:
+		break;
 	}
 }
 void Window::clear() const
 {
+
+
+	SDL_RenderPresent(_renderer);
 	SDL_SetRenderDrawColor(_renderer, 0, 0, 0, 255);
 	SDL_RenderClear(_renderer);
-
-
-
-	SDL_SetRenderDrawColor(_renderer, 255, 255, 255, 255);
-	SDL_RenderDrawLine(_renderer, _mouseX, _mouseY, _width / 2, _height / 2);
 	
 
-	SDL_Rect rect;
-	rect.w = 30;
-	rect.h = 30;
-	rect.x = _mouseX - (rect.w / 2);
-	rect.y = _mouseY - (rect.h /2);
-	SDL_SetRenderDrawColor(_renderer, 200, 0, 200, 255);
-	SDL_RenderFillRect(_renderer, &rect);
 
-//must be after everything.
-	SDL_RenderPresent(_renderer);
+
 }
