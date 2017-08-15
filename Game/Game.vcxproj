@@ -117,12 +117,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="entity.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="rect.cpp" />
+    <ClCompile Include="star.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="entity.h" />
     <ClInclude Include="rect.h" />
+    <ClInclude Include="star.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

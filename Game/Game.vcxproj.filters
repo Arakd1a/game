@@ -24,12 +24,24 @@
     <ClCompile Include="rect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="star.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="rect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="star.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

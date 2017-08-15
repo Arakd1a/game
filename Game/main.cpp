@@ -1,12 +1,12 @@
 #include "window.h"
-#include "rect.h";
+#include "star.h";
+#include <iostream>;
 
-void pollEvents(Window &window, Rect &rect)
+void pollEvents(Window &window) // Rect &rect
 {
 	SDL_Event event;
 	if (SDL_PollEvent(&event))
 	{
-		rect.pollEvents(event);
 		window.pollEvents(event);
 	}
 }
@@ -14,11 +14,9 @@ void pollEvents(Window &window, Rect &rect)
 int main(int argc, char **argv)
 {
 	Window window("Game in C++", 800, 600);
-	Rect rect(window, 120, 120, 100, 100, 200, 0, 200, 255);
 	while (!window.isClosed())
 	{	
-		pollEvents(window, rect);
-		rect.draw();
+		pollEvents(window); //rect
 		window.clear();
 	}
 	return 0;
